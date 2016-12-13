@@ -16,7 +16,7 @@ Text Domain: avztheme
 1 - Normalize
 2 - Grids
 3 - Typography
-	3.1 - 
+	3.1 - Standart elements
 	3.2 - Fontello
 4 - Header
 5 - Main
@@ -24,3 +24,113 @@ Text Domain: avztheme
 7 - Media Queries
 
 --------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+1 - Normalize
+--------------------------------------------------------------*/
+a, abbr, acronym, address, applet, article, aside, audio, 
+b, big, blockquote, body, caption, canvas, center, cite, code,
+dd, del, details, dfn, dialog, div, dl, dt, em, embed, 
+fieldset, figcaption, figure, form, footer, 
+header, hgroup, h1, h2, h3, h4, h5, h6, html, 
+i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav,
+object, ol, output, p, pre, q, ruby, 
+s, samp, section, main, small, span, strike, strong, sub, summary, sup, 
+tt, table, tbody, textarea, tfoot, thead, time, tr, th, td,
+u, ul, var, video { 
+	font-family: inherit; 
+	font-size: 100%; 
+	font-weight: inherit; 
+	font-style: inherit; 
+	vertical-align: baseline; 
+	white-space: normal;
+	text-align: left; 
+	margin: 0; 
+	padding: 0; 
+	border: 0; 
+	outline: 0;
+	background: transparent; 
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup,
+menu, nav, section, main, div { 
+	display: block; 
+}
+								  
+ol, ul { 
+	list-style: none; 
+}
+blockquote, q {
+	quotes: none; 
+}
+
+table { 
+	border-collapse: collapse; 
+	border-spacing: 0; 
+}
+div, input, textarea, button, h1, h2, h3, h4, h5, h6, a, span, a:focus{
+	outline: none;
+}
+
+/*--------------------------------------------------------------
+2 - Grids
+--------------------------------------------------------------*/
+.fullwidth{
+	margin: 0 auto;
+    position: relative;
+    width: 100%;
+}
+.container {
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+}
+.col {
+    display: inline;
+    float: left;
+    margin: 0 15px;
+}
+.clear {
+    clear:both;
+    display:block;
+    height:0;
+    overflow:hidden;
+    visibility:hidden;
+    width:0;
+}
+.row:before, .row:after{
+    content:'';
+    display:block;
+    height:0;
+    overflow:hidden;
+    visibility:hidden;
+    width:0;
+}
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+	.container {
+	    max-width: 1170px;
+	    width: 1170px;
+	}
+}
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+	.container {
+	    max-width: 962px;
+	    width: 962px;
+	}
+}
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+	.container {
+	    max-width: 738px;
+	    width: 738px;
+	}
+}
+/* Extra small devices (phones, less than 768px) */
+@media (max-width: 767px) {
+	.container {
+	    max-width: 100%;
+	    width: 100%;
+	}
+}
