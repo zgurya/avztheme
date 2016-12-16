@@ -55,8 +55,8 @@ function avztheme_custom_image_sizes_names($sizes) {
 /**
  * Allow upload svg
  */
-add_filter('upload_mimes', 'beinside_mime_types');
-function beinside_mime_types($mimes) {
+add_filter('upload_mimes', 'avztheme_mime_types');
+function avztheme_mime_types($mimes) {
 	$mimes['svg'] = 'image/svg+xml';
 	return $mimes;
 }
@@ -64,8 +64,8 @@ function beinside_mime_types($mimes) {
 /**
  * Change upload filename
  */
-add_filter('sanitize_file_name', 'landing_rename_upfile', 10, 2);
-function landing_rename_upfile($filename, $filename_raw) {
+add_filter('sanitize_file_name', 'avztheme_rename_upfile', 10, 2);
+function avztheme_rename_upfile($filename, $filename_raw) {
 	date_default_timezone_set('Europe/Kiev');
 	$info=pathinfo($filename);
 	$ext=empty($info['extension']) ? '' : '.' . $info['extension'];
@@ -115,7 +115,7 @@ function avztheme_scripts() {
 	wp_enqueue_script( 'masonry', '//cdnjs.cloudflare.com/ajax/libs/masonry/3.1.2/masonry.pkgd.js', array('jquery'), null, true );
 	wp_enqueue_script( 'imagesloaded', 'https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js', array('jquery'), null, true );
 	
-	/* Google Maps API 
+	/* Google Maps API for ACF
 	if(is_page('pageID')){
 		wp_enqueue_script( 'google-map', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB6OxPPKVe6u9Ga_WM1yU-U4829xN3efQk&v=3.exp', array(), '3', true );
 		wp_enqueue_script( 'google-map-init', get_template_directory_uri() . '/js/google-maps-init.js', array('google-map', 'jquery'), '0.1', true );
@@ -130,7 +130,7 @@ function avztheme_scripts() {
 
 
 /**
- * Add for main loop Custom Post Types
+ * Edit Main Loop 
  */
 add_filter( 'pre_get_posts', 'avztheme_posts' );
 function avztheme_posts( $query ) {
@@ -165,6 +165,13 @@ if (!function_exists('avztheme_pagination')) {
 		$big = 9999;
 		echo paginate_links(array('base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))), 'format' => '?paged=%#%', 'current' => max(1, get_query_var('paged')), 'prev_next' => true, 'prev_text' => __('&laquo;', 'mh-magazine-lite'), 'next_text' => __('&raquo;', 'mh-magazine-lite'), 'total' => $wp_query->max_num_pages));
 	}
+}
+
+/**
+ * Add options page
+ */
+if( function_exists('acf_add_options_page') ) {
+	acf_add_options_page('Theme options','avztheme');
 }
 
 /**
