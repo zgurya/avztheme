@@ -1,6 +1,6 @@
 /*
 Theme Name: Default WordPress Theme
-Theme URI: https://github.com/zgurya
+Theme URI: https://github.com/zgurya/wp-theme
 Author: Zgurya Andrey
 Author URI: https://github.com/zgurya
 Description: Default WordPress Theme which you can improve for yourself
@@ -17,11 +17,13 @@ Text Domain: avztheme
 2 - Grids
 3 - Typography
 	3.1 - Basic elements
-	3.2 - Alignments
-	3.3 - Forms
-	3.4 - Lists
-	3.5 - Tables
-	3.6 - Fontello
+	3.2 - Screen readers
+	3.3 - Alignments
+	3.4 - Forms
+	3.5 - Lists
+	3.6 - Tables
+	3.7 - Media
+	3.8 - Fontello
 4 - Header
 5 - Main
 6 - Footer
@@ -606,7 +608,45 @@ a {
 }
 
 /*--------------------------------------------------------------
-3.2 - Alignments
+3.2 - Screen readers
+--------------------------------------------------------------*/
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	height: 1px;
+	overflow: hidden;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-size: 0.875rem;
+	font-weight: 700;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar. */
+}
+.bypostauthor {
+	border: 1px solid #333;
+	padding: 2px;
+}
+
+/*--------------------------------------------------------------
+3.3 - Alignments
 --------------------------------------------------------------*/
 
 .alignleft {
@@ -627,7 +667,7 @@ a {
 }
 
 /*--------------------------------------------------------------
-3.3 - Forms
+3.4 - Forms
 --------------------------------------------------------------*/
 
 label {
@@ -780,7 +820,7 @@ input[type="submit"].secondary:focus {
 }
 
 /*--------------------------------------------------------------
-3.4 - Lists
+3.5 - Lists
 --------------------------------------------------------------*/
 
 ul,
@@ -812,7 +852,7 @@ dd {
 }
 
 /*--------------------------------------------------------------
-3.5 - Tables
+3.6 - Tables
 --------------------------------------------------------------*/
 
 table {
@@ -850,7 +890,39 @@ td:last-child {
 }
 
 /*--------------------------------------------------------------
-3.6 - Fontello
+3.7 - Media
+--------------------------------------------------------------*/
+embed,
+iframe,
+object {
+	margin-bottom: 1.5em;
+	max-width: 100%;
+}
+.sticky {
+	position: relative;
+}
+.wp-caption,
+.gallery-caption {
+	color: #666;
+	font-size: 13px;
+	font-size: 0.8125rem;
+	font-style: italic;
+	margin-bottom: 1.5em;
+	max-width: 100%;
+}
+
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wp-caption .wp-caption-text {
+	margin: 0.8075em 0;
+}
+
+/*--------------------------------------------------------------
+3.8 - Fontello
 --------------------------------------------------------------*/
 @font-face {
   font-family: 'fontello';

@@ -10,6 +10,9 @@ function avztheme_theme_setup(){
 	// Let WordPress manage the document title.
 	add_theme_support('title-tag');
 	
+	// Add default posts and comments RSS feed links to head.
+	add_theme_support('automatic-feed-links');
+	
 	// Enable support for Post Thumbnails on posts and pages.
 	add_theme_support('post-thumbnails');
 	
@@ -20,6 +23,12 @@ function avztheme_theme_setup(){
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu', 'avztheme' )
 	) );
+	
+	add_theme_support( 'html5', array('comment-form','comment-list','gallery','caption',) );
+	
+	if ( ! isset( $content_width ) ) {
+		$content_width = 600;
+	}
 	
 	// Enable support for Post Formats.
 	//add_theme_support( 'post-formats', array('aside','image','video','quote','link','gallery','status','audio','chat',));
@@ -95,7 +104,7 @@ function avztheme_widgets_init(){
 	register_sidebar( array(
 		'name' => __('Right sidebar', 'avztheme'),
 		'id' => 'right-sidebar',
-		'description' => __('There are you can place additional widgets', 'cultura'),
+		'description' => __('There are you can place additional widgets', 'avztheme'),
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>'
 	));
@@ -126,6 +135,10 @@ function avztheme_scripts() {
 	wp_enqueue_style('avztheme-css', get_stylesheet_uri(), false, '');
 	wp_enqueue_script( 'avztheme-js', get_template_directory_uri() . '/js/avztheme.js', array('jquery'), null, true );
 	wp_localize_script( 'avztheme-js', 'ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+	
+	if ( is_singular() && comments_open()) {
+		wp_enqueue_script( 'comment-reply' );
+	}
 }
 
 
@@ -163,7 +176,7 @@ if (!function_exists('avztheme_pagination')) {
 	function avztheme_pagination() {
 		global $wp_query;
 		$big = 9999;
-		echo paginate_links(array('base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))), 'format' => '?paged=%#%', 'current' => max(1, get_query_var('paged')), 'prev_next' => true, 'prev_text' => __('&laquo;', 'mh-magazine-lite'), 'next_text' => __('&raquo;', 'mh-magazine-lite'), 'total' => $wp_query->max_num_pages));
+		echo paginate_links(array('base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))), 'format' => '?paged=%#%', 'current' => max(1, get_query_var('paged')), 'prev_next' => true, 'prev_text' => __('&laquo;', 'avztheme'), 'next_text' => __('&raquo;', 'avztheme'), 'total' => $wp_query->max_num_pages));
 	}
 }
 
