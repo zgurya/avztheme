@@ -115,12 +115,12 @@ function avztheme_scripts() {
 	wp_enqueue_script( 'masonry', '//cdnjs.cloudflare.com/ajax/libs/masonry/3.1.2/masonry.pkgd.js', array('jquery'), null, true );
 	wp_enqueue_script( 'imagesloaded', 'https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js', array('jquery'), null, true );
 	
-	/* Google Maps API for ACF
-	if(is_page('pageID')){
+	/* Google Maps API for ACF */
+	if(is_singular()){
 		wp_enqueue_script( 'google-map', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB6OxPPKVe6u9Ga_WM1yU-U4829xN3efQk&v=3.exp', array(), '3', true );
 		wp_enqueue_script( 'google-map-init', get_template_directory_uri() . '/js/google-maps-init.js', array('google-map', 'jquery'), '0.1', true );
 	}
-	*/
+	
 
 	/* Theme */
 	wp_enqueue_style('avztheme-css', get_stylesheet_uri(), false, '');
