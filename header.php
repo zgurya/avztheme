@@ -7,4 +7,9 @@
 </head>
 <body <?php body_class();?>>
 <header class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary', 'inner' => '', 'container'=>'') ); ?>	
+		</div>
+	</div>
 </header>
