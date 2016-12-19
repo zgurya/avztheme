@@ -12,7 +12,14 @@
 		<?php endif;?>
 	</div>
 	<div class="row">
-		<?php if ( comments_open() || get_comments_number() ) comments_template();?>
+		<div class="col-lg-12">
+			<?php if ( comments_open() || get_comments_number() ) comments_template();?>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<?php the_tags( 'Tags: ', ', ', '' ); ?>
+		</div>
 	</div>
 </main>
 <?php get_footer(); ?>
