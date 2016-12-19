@@ -280,6 +280,11 @@ template {
 [hidden] {
 	display: none;
 }
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 
 /*--------------------------------------------------------------
 2 - Grids
@@ -291,8 +296,14 @@ template {
 }
 .container {
     margin: 0 auto;
-    padding: 0;
     position: relative;
+}
+.container:before, .container:after{
+	display: table;
+    content: " ";
+}
+.container:after{
+	clear: both;
 }
 .container-fluid{
 	margin: 0 auto;
@@ -300,10 +311,12 @@ template {
     position: relative;
     width: 100%;
 }
+
 .row > [class^="col-"] {
     display: inline;
     float: left;
-    padding: 0 15px;
+	padding-right: 15px;
+    padding-left: 15px;
 }
 .clear {
     clear:both;
