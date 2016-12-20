@@ -10,6 +10,7 @@
 			<?php while ( have_posts() ) : the_post();?>
 				<article <?php post_class('col-lg-3'); ?>>
 					<h2><?php the_title();?></h2>
+					<?php the_post_thumbnail();?>
 					<?php echo wp_trim_words( strip_shortcodes(get_the_content()), 20, '...' );?>
 				</article>
 			<?php endwhile;?>
