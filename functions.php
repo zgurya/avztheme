@@ -184,7 +184,15 @@ if (!function_exists('avztheme_pagination')) {
  * Add options page
  */
 if( function_exists('acf_add_options_page') ) {
-	acf_add_options_page('Theme options','avztheme');
+	if( function_exists('acf_add_options_page') ) {
+		acf_add_options_page(array(
+		'page_title' 	=> __('Theme options','avztheme'),
+		'menu_title'	=> __('Theme options','avztheme'),
+		'menu_slug' 	=> 'avztheme-theme-settings',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> false
+		));
+	}
 }
 
 /**
