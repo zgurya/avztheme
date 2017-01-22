@@ -55,10 +55,8 @@ function avztheme_add_image_sizes() {
  */
 add_filter('image_size_names_choose', 'avztheme_image_sizes_names');
 function avztheme_custom_image_sizes_names($sizes) {
-	$myimgsizes = array(
-			'thumbnail-archive' => __( 'Thumbnail archive size','avztheme')
-	);
-	return $myimgsizes;
+	$sizes['thumbnail-archive'] =__( 'Thumbnail archive size','avztheme');
+	return $sizes;
 }
 
 /**
