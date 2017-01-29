@@ -306,10 +306,15 @@ template {
 .container:after, .container-fluid:after{
 	clear: both;
 }
-
+.container .row, .container-fluid .row{
+	display: table;
+	width: 100%;
+	max-width: 100%;
+}
 .row > [class^="col-"] {
 	padding-right: 15px;
     padding-left: 15px;
+    display: table-cell;
 }
 .clear {
     clear:both;
