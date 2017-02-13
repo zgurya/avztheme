@@ -307,7 +307,7 @@ template {
 	clear: both;
 }
 .container .row, .container-fluid .row{
-	display: table;
+	display: inline-block;
 	width: 100%;
 	max-width: 100%;
 }
