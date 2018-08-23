@@ -75,7 +75,7 @@ function avztheme_mime_types($mimes) {
  */
 add_filter('sanitize_file_name', 'avztheme_rename_upfile', 10, 2);
 function avztheme_rename_upfile($filename, $filename_raw) {
-	date_default_timezone_set('Europe/Kiev');
+	//date_default_timezone_set('Europe/Kiev');
 	$info=pathinfo($filename);
 	$ext=empty($info['extension']) ? '' : '.' . $info['extension'];
 	$ext=str_replace('jpeg','jpg',$ext);
