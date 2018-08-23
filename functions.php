@@ -129,6 +129,11 @@ function avztheme_scripts() {
         wp_enqueue_style('grids-css', get_template_directory_uri().'/css/grids.css', false, '');
     }
     
+    /* Awesome Fonts */
+    if(function_exists('acf_add_options_page') && get_field('theme_options_awesome_fonts','option')){
+    	wp_enqueue_style('fontawesome-css', 'https://use.fontawesome.com/releases/v5.2.0/css/all.css', false, '');
+    }
+    
 	/* Magnific Popup */
     if(function_exists('acf_add_options_page') && get_field('theme_options_magnific_popup','option')){
 	   wp_enqueue_script('magnific-popup-js', 'https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js', array('jquery'), null, true );

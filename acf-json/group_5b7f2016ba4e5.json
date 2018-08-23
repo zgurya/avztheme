@@ -76,6 +76,25 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_5b7f24cd9c44e",
+            "label": "Awesome Fonts",
+            "name": "theme_options_awesome_fonts",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_5b7eb8b35195a",
             "label": "Magnific Popup",
             "name": "theme_options_magnific_popup",
@@ -201,5 +220,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1535058181
+    "modified": 1535059194
 }
