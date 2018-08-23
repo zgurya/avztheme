@@ -3,6 +3,10 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no">
+	<?php if(get_field('theme_options_favicon','option')):?>
+		<link rel="shortcut icon" href="<?php the_field('theme_options_favicon','option');?>" type="image/x-icon">
+		<link rel="icon" href="<?php the_field('theme_options_favicon','option');?>" type="image/x-icon">
+	<?php endif;?>
 	<?php wp_head(); ?>
 	<?php the_field('theme_options_code_in_head','option');?>
 </head>
