@@ -113,23 +113,47 @@ function avztheme_widgets_init(){
  */
 add_action('wp_enqueue_scripts', 'avztheme_scripts');
 function avztheme_scripts() {
-
+    /* Basic WP styles */
+    wp_enqueue_style('basic-css', get_template_directory_uri().'/css/basic.css', false, '');
+    
+    /* Bootstrap */
+    if(function_exists('acf_add_options_page') && get_field('theme_options_bootstrap','option')){
+        if(get_field('theme_options_bootstrap_v','option')==3){
+            wp_enqueue_script( 'magnific-popup-js', get_template_directory_uri().'/js/jquery.magnific-popup.min.js', array('jquery'), null, true );
+            wp_enqueue_style('magnific-popup-css', get_template_directory_uri().'/css/magnific-popup.css', false, '');
+        }else{
+            wp_enqueue_script( 'magnific-popup-js', get_template_directory_uri().'/js/jquery.magnific-popup.min.js', array('jquery'), null, true );
+            wp_enqueue_style('magnific-popup-css', get_template_directory_uri().'/css/magnific-popup.css', false, '');
+        }
+    }else{
+        wp_enqueue_style('normalize-css', get_template_directory_uri().'/css/normalize.css', false, '');
+    }
+    
+    /* Custom Grids */
+    if(function_exists('acf_add_options_page') && get_field('theme_options_custom_grids','option')){
+        wp_enqueue_style('grids-css', get_template_directory_uri().'/css/grids.css', false, '');
+    }
+    
 	/* Magnific Popup */
-	wp_enqueue_script( 'magnific-popup-js', get_template_directory_uri().'/js/jquery.magnific-popup.min.js', array('jquery'), null, true );
-	wp_enqueue_style('magnific-popup-css', get_template_directory_uri().'/css/magnific-popup.css', false, '');
+    if(function_exists('acf_add_options_page') && get_field('theme_options_magnific_popup','option')){
+	   wp_enqueue_script( 'magnific-popup-js', 'https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js', array('jquery'), null, true );
+	   wp_enqueue_style('magnific-popup-css', 'https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css', false, '');
+    }
 	
 	/* Masonry */
-	wp_enqueue_script( 'masonry', '//cdnjs.cloudflare.com/ajax/libs/masonry/3.1.2/masonry.pkgd.js', array('jquery'), null, true );
-	wp_enqueue_script( 'imagesloaded', 'https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js', array('jquery'), null, true );
+    if(function_exists('acf_add_options_page') && get_field('theme_options_masonry','option')){
+	   wp_enqueue_script( 'masonry', '//cdnjs.cloudflare.com/ajax/libs/masonry/3.1.2/masonry.pkgd.js', array('jquery'), null, true );
+	   wp_enqueue_script( 'imagesloaded', 'https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js', array('jquery'), null, true );
+    }
 	
 	/* Google Maps API for ACF */
-	if(is_singular()){
+	if(function_exists('acf_add_options_page') && get_field('theme_options_google_maps','option') && is_singular()){
 		wp_enqueue_script( 'google-map', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB6OxPPKVe6u9Ga_WM1yU-U4829xN3efQk&v=3.exp', array(), '3', true );
 		wp_enqueue_script( 'google-map-init', get_template_directory_uri() . '/js/google-maps-init.js', array('google-map', 'jquery'), '0.1', true );
 	}
 	
 
-	/* Theme */
+	/* Theme scripts*/
 	wp_enqueue_style('avztheme-css', get_stylesheet_uri(), false, '');
 	wp_enqueue_script( 'avztheme-js', get_template_directory_uri() . '/js/avztheme.js', array('jquery'), null, true );
 	wp_localize_script( 'avztheme-js', 'ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
@@ -182,15 +206,13 @@ if (!function_exists('avztheme_pagination')) {
  * Add options page
  */
 if( function_exists('acf_add_options_page') ) {
-	if( function_exists('acf_add_options_page') ) {
-		acf_add_options_page(array(
-		'page_title' 	=> __('Theme options','avztheme'),
-		'menu_title'	=> __('Theme options','avztheme'),
-		'menu_slug' 	=> 'avztheme-theme-settings',
-		'capability'	=> 'edit_posts',
-		'redirect'		=> false
-		));
-	}
+    acf_add_options_page(array(
+        'page_title' 	=> __('Theme options','avztheme'),
+        'menu_title'	=> __('Theme options','avztheme'),
+        'menu_slug' 	=> 'avztheme-theme-settings',
+        'capability'	=> 'edit_posts',
+        'redirect'		=> false
+    ));
 }
 
 /**
