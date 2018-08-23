@@ -13,7 +13,7 @@
 *  @return	n/a
 */
 
-function render_map( $el ) {
+function render_map( $el, marker_img ) {
 
 	// var
 	var $markers = $el.find('.marker');
@@ -37,7 +37,7 @@ function render_map( $el ) {
 	// add markers
 	$markers.each(function(){
 
-    	add_marker( $(this), map );
+    	add_marker( $(this), map, marker_img );
 
 	});
 	//var markerCluster = new MarkerClusterer(map, markers, {imagePath: 'images/m'});
@@ -61,19 +61,16 @@ function render_map( $el ) {
 *  @return	n/a
 */
 
-function add_marker( $marker, map ) {
+function add_marker( $marker, map, marker_img ) {
 
 	// var
 	var latlng = new google.maps.LatLng( $marker.attr('data-lat'), $marker.attr('data-lng') );
-	
-	// set marker icon
-	var image = 'http://'+document.domain+'/wp-content/themes/realestate/images/icon-map.png'
 	
 	// create marker
 	var marker = new google.maps.Marker({
 		position	: latlng,
 		map			: map,
-		icon		: image
+		icon		: marker_img
 	});
 
 	// add to array
@@ -160,7 +157,7 @@ function center_map( map ) {
 
 $(window).load(function(){
 	$('.acf-map').each(function(){
-		render_map( $(this) );
+		render_map( $(this), marker_img );
 		//setTimeout(render_map($(this)), 500);
 	});
 });
