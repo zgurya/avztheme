@@ -54,9 +54,11 @@ function avztheme_add_image_sizes() {
  * Setup additional media size names
  */
 add_filter('image_size_names_choose', 'avztheme_image_sizes_names');
-function avztheme_custom_image_sizes_names($sizes) {
-	$sizes['thumbnail-archive'] =__( 'Thumbnail archive size','avztheme');
-	return $sizes;
+function avztheme_image_sizes_names($sizes) {
+	$new_sizes = array(
+		'thumbnail-archive' => __( 'Thumbnail archive size','avztheme')
+	);
+	return array_merge( $sizes, $new_sizes );
 }
 
 /**
