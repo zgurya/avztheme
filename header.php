@@ -4,12 +4,13 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no">
 	<?php wp_head(); ?>
+	<?php the_field('theme_options_code_in_head','option');?>
 </head>
 <body <?php body_class();?>>
 <header class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary', 'inner' => '', 'container'=>'') ); ?>	
+			<?php wp_nav_menu( array( 'theme_location' => 'mainmenu', 'menu_id' => 'mainmenu', 'inner' => '', 'container'=>'') ); ?>	
 		</div>
 	</div>
 </header>
